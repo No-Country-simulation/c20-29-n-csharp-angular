@@ -1,1 +1,52 @@
-<p>product-form works!</p>
+<form [formGroup]="productForm">
+  <h2>Formulario de Productos o Servicios</h2>
+  <input type="text" placeholder="Nombre o razon social">
+  <br>
+  <br>
+  <!--TODO -> Duda sobre si el usuario escribe o selecciona -->
+  <input type="text" placeholder="Producto o servicio que ofrece">
+  <br>
+  <br>
+  <input type="number" placeholder="Telefono">
+  <br>
+  <br>
+  <input type="text" placeholder="Correo electronico">
+  <h3>Detalles del los servicions veterinarios (Si aplica)</h3>
+  <input type="text" placeholder="Numero de licencia veterinaria">
+  <br>
+  <br>
+  <textarea name="description-services" cols="30" rows="10" placeholder="Describa brevemente sus servicios"></textarea>
+  <h3>Detalles del los productos que comercializa (Si aplica)</h3>
+  <input type="text" placeholder="Numero de identificacion fiscal">
+  <br>
+  <br>
+  <textarea name="description-product" cols="30" rows="10" placeholder="Describa brevemente sus productos"></textarea>
+  <h3>Referencias</h3>
+  <span>Ingresa los datos de una personas que puedan hablar acerca de los servicios o productos que ofrece</span>
+  <br>
+  <br>
+  <input type="text" placeholder="Nombre y Apellido">
+  <br>
+  <br>
+  <input type="number" placeholder="Telefono">
+  <h3>Información adicional</h3>
+  <input type="text" placeholder="Red social o pagina web">
+
+  <h3>Documentacion y verificación</h3>
+  <span>Sube un documento en formato PDF que incluya su licencia para ejercer la profesión de veterinario y/o su numero de
+  identificación fiscal en el caso de venta de productos.</span>
+  <br>
+  <br>
+  <div>
+    <input type="file">
+  </div>
+  <br>
+  <br>
+  <input type="checkbox" name="terms-conditions">
+  <span>Declaro que la información suministrada es verdadera y acepto los términos y condiciones del uso de la
+    aplicación
+    Instapatitas.</span>
+    <br>
+    <br>
+  <button type="submit">Enviar Formulario</button>
+</form>
