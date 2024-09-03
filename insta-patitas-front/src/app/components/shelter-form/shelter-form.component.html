@@ -1,0 +1,140 @@
+<div class="flex w-full">
+  <form
+    [formGroup]="shelterForm"
+    class="flex flex-col flex-wrap justify-evenly w-4/5 mr-auto p-3 mx-auto min-w-96 container"
+  >
+    <h1 class="mx-auto text-blue-800 font-bold text-2xl m-2 mt-5 w-4/5">
+      Formulario de refugio
+    </h1>
+    <div class="mt-6">
+      <h2 class="mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">
+        Acerca del refugio:
+      </h2>
+    </div>
+    <input
+      id="name"
+      type="text"
+      placeholder="Nombre del refugio"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="shelterName"
+    />
+    <input
+      id="name"
+      type="text"
+      placeholder="Tipo de organización"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="organizationType"
+    />
+    <input
+      id="name"
+      type="text"
+      placeholder="Dirección"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="organizationType"
+    />
+    <input
+      id="name"
+      type="text"
+      placeholder="Año de fundación"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="foundationYear"
+    />
+    <div class="justify-center mt-6">
+      <h2
+        class="mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5"
+        for="name"
+      >
+        Sobre el responsable del refugio
+      </h2>
+    </div>
+    <input
+      id="name"
+      type="text"
+      placeholder="Nombres y apellidos"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="nameAndLastNames"
+    />
+    <input
+      id="name"
+      type="text"
+      name=""
+      placeholder="DNI"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="dni"
+    />
+    <input
+      id="name"
+      type="text"
+      name=""
+      placeholder="Telefono"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="phoneNumber"
+    />
+
+    <input
+      id="name"
+      type="text"
+      placeholder="Correo"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="email"
+    />
+    <h2 class="mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">
+      Referencias
+    </h2>
+    <p class="mx-auto block m-2 mt-2 w-4/5 mr-auto text-blue-400">
+      Ingresa los datos de una persona que pueda hablar
+    </p>
+    <input
+      id="name"
+      type="text"
+      placeholder="Nombres y apellidos"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="referencesName"
+    />
+    <input
+      id="name"
+      type="text"
+      placeholder="Telefono"
+      class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1"
+      formControlName="referencesPhoneNumber"
+    />
+
+    <h3 class="mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">
+      Documentacion y verificación
+    </h3>
+    <span class="mx-auto block m-2 mt-2 w-4/5 mr-auto text-blue-400"
+      >Sube un documento en formato PDF que incluya su licencia para ejercer la
+      profesión de veterinario y/o su numero de identificación fiscal en el caso
+      de venta de productos.</span
+    >
+
+    <div
+      class="flex flex-row justify-center items-center border-2 border-dashed border-gray-500 rounded-md w-4/5 h-40 my-1 mx-auto text-center"
+    >
+      <input
+        class="font-bold p-2 w-4/6"
+        type="file"
+        formControlName="documentation"
+      />
+    </div>
+
+    <div class="flex w-4/5 my-7 mx-auto p-1">
+      <input
+        class="block mr-4 min-w-6"
+        type="checkbox"
+        formControlName="termsConditions"
+      />
+      <span class="font-bold"
+        >Declaro que la información suministrada es verdadera y acepto los
+        términos y condiciones del uso de la aplicación Instapatitas.</span
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="block rounded-md w-4/5 my-1 mx-auto text-white bg-blue-700 hover:bg-blue-800 p-2"
+    >
+      Enviar Formulario
+    </button>
+  </form>
+</div>
