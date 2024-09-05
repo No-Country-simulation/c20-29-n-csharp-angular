@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Backend.Models;
 
-public partial class Donaciones
+public class Donaciones
 {
     public int IdDonacion { get; set; }
 

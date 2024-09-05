@@ -1,11 +1,14 @@
 
-using Backend.Data.Context;
+using Backend.Data;
+using Backend.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Backend
 {
-	public class Program
+    public class Program
 	{
+
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
@@ -17,15 +20,15 @@ namespace Backend
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-			builder.Services.AddDbContext<AppDbContext>(options => 
-				options.UseMySql(builder.Configuration.GetConnectionString("BD") ?? string.Empty,
-				new MySqlServerVersion(new Version()), mySqlOptionsAction: sqlOptions =>
-				{
-					sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(10), errorNumbersToAdd: null);
-				})
-			);
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseMySql(builder.Configuration.GetConnectionString("AppDbConnectionString"),
+                new MySqlServerVersion(new Version(10, 4, 32))));
 
-			var app = builder.Build();
+            //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
+            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())

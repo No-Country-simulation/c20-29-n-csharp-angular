@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Backend.Utility;
 
 namespace Backend.Models;
 
-public partial class Refugios
+public class Refugios
 {
     public int IdRefugio { get; set; }
 
-    public string Nombre { get; set; } = null!;
+    public string Nombre { get; set; } 
+    
 
-    public string TipoOrganizacion { get; set; } = null!;
+    public TipoOrganizacion _TipoOrganizacion { get; set; }
 
     public string? UbicacionFisica { get; set; }
 
@@ -19,7 +21,7 @@ public partial class Refugios
 
     public string? DocumentoLegal { get; set; }
 
-    public string? FotosRefugio { get; set; }
+    public string? FotosRefugio { get; set; }   
 
     public string? VideoPresentacion { get; set; }
 
@@ -29,7 +31,7 @@ public partial class Refugios
 
     public virtual ICollection<Donaciones> Donaciones { get; set; } = new List<Donaciones>();
 
-    public virtual ICollection<Mascotas> Mascotas { get; set; } = new List<Mascotas>();
+    //public virtual ICollection<Mascotas> Mascotas { get; set; } = new List<Mascotas>();
 
     public virtual ICollection<Post> Post { get; set; } = new List<Post>();
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Backend.Models;
 
-public partial class Post
+public class Post
 {
     public int IdPost { get; set; }
 
-    public string Titulo { get; set; } = null!;
+    public string Titulo { get; set; }
 
-    public string TipoPost { get; set; } = null!;
+    public string TipoPost { get; set; }
 
     public string? Descripcion { get; set; }
 

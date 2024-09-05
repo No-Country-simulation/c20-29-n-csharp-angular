@@ -1,10 +1,10 @@
-using Backend.Data.Context;
+using Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("[controller]")]
 	public class UsuarioController : ControllerBase
 	{

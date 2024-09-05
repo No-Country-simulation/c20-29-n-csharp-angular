@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Backend.Models;
 
-public partial class Comentarios
+public class Comentarios
 {
     public int IdComentario { get; set; }
 
-    public string Texto { get; set; } = null!;
+    public string Texto { get; set; }
 
     public DateTime? Fecha { get; set; }
 
@@ -17,9 +17,9 @@ public partial class Comentarios
 
     public int? IdProducto { get; set; }
 
-    public virtual Mascotas? IdMascotaNavigation { get; set; }
+    //public virtual Mascotas? IdMascotaNavigation { get; set; }
 
     public virtual Post? IdPostNavigation { get; set; }
 
-    public virtual Productos? IdProductoNavigation { get; set; }
+    //public virtual Productos? IdProductoNavigation { get; set; }
 }
