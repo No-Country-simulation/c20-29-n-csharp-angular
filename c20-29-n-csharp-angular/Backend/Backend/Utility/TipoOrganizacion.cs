@@ -1,12 +1,10 @@
 ﻿namespace Backend.Utility
 {
-    public class TipoOrganizacion
+    public enum TipoOrg
     {
-        public enum TipoOrg
-        {
-            Mascota,
-            Servicio,
-            Producto
-        }
+        Mascota,
+        Servicio,
+        Producto
     }
+
 }

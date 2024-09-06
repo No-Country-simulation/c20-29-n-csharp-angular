@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Backend.Utility;
 
 namespace Backend.Models;
 
 public class Refugios
 {
+    [Key]
     public int IdRefugio { get; set; }
 
     public string Nombre { get; set; } 
     
-
-    public TipoOrganizacion _TipoOrganizacion { get; set; }
+    public TipoOrg _TipoOrganizacion { get; set; }
 
     public string? UbicacionFisica { get; set; }
 

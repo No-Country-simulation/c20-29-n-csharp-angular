@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Models;
 
 public class Donaciones
 {
+    [Key]
     public int IdDonacion { get; set; }
 
     public decimal Monto { get; set; }

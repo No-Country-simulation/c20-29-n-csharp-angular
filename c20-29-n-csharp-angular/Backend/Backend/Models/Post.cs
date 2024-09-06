@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Models;
 
 public class Post
 {
+    [Key]
     public int IdPost { get; set; }
 
     public string Titulo { get; set; }

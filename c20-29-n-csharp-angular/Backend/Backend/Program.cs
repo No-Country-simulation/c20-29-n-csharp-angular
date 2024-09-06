@@ -20,12 +20,12 @@ namespace Backend
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseMySql(builder.Configuration.GetConnectionString("AppDbConnectionString"),
-                new MySqlServerVersion(new Version(10, 4, 32))));
+			//builder.Services.AddDbContext<AppDbContext>(options =>
+			//	options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+			//	new MySqlServerVersion(new Version(8,0,21))));
 
-            //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+			builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
             var app = builder.Build();

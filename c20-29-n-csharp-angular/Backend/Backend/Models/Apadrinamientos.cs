@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Models;
 
 public class Apadrinamientos
 {
+    [Key]
     public int IdApadrinamiento { get; set; }
 
     public int? IdPost { get; set; }
