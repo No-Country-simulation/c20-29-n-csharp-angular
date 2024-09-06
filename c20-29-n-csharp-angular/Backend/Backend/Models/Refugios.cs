@@ -12,11 +12,11 @@ public class Refugios
 
     public string Nombre { get; set; } 
     
-    public TipoOrg _TipoOrganizacion { get; set; }
+    public TipoOrg TipoOrganizacion { get; set; }
 
     public string? UbicacionFisica { get; set; }
 
-    public int? AñoFundacion { get; set; }
+    public int? AnioFundacion { get; set; }
 
     public string? DatosContacto { get; set; }
 
