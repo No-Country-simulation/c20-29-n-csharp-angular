@@ -5,9 +5,9 @@ namespace Backend.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions options) : base(options)
+		public AppDbContext(DbContextOptions options) : base(options)
         {
-        }
+		}
         public DbSet<Adopciones> Adopciones { get; set; }
 
         public DbSet<Apadrinamientos> Apadrinamientos { get; set; }
@@ -25,14 +25,5 @@ namespace Backend.Data
         public DbSet<Refugios> Refugios { get; set; }
 
         public DbSet<Usuarios> Usuarios { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseMySql("Server=localhost;port=33066;Database=mvpslack;User=root;Password=1234;",ServerVersion.Parse("10.4.6-mariadb"));
-            }
-        }
-        // protected override void OnModelCreating(ModelBuilder modelBuilder) { }
     }
 }
