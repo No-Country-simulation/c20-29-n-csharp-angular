@@ -18,7 +18,7 @@ namespace Backend.Controllers
 		[HttpGet("ListarUsuarios")]
 		public async Task<IActionResult> ListarUsuarios()
 		{
-			var response = await _appDbContext.Usuarios.ToListAsync();
+			var response = await _appDbContext.Usuario.ToListAsync();
 			return Ok(response);
 		}
 	}

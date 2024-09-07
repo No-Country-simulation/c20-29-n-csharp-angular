@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Models;
 
-public class Apadrinamientos
+public partial class Apadrinamientos
 {
-    public int IdApadrinamiento { get; set; }
+	[Key]
+	public int IdApadrinamiento { get; set; }
 
-    public int? IdPost { get; set; }
-
-    //public int? IdMascota { get; set; }
+	public int? IdPost { get; set; }
 
     public DateTime? Fecha { get; set; }
 
-   // public virtual Mascotas? IdMascotaNavigation { get; set; }
+	public int? IdPadrino { get; set; }
 
-    public virtual Post? IdPostNavigation { get; set; }
+	[ForeignKey("IdPost")]
+	public virtual Usuario? Padrino { get; set; }
+
+	[ForeignKey("IdPadrino")]
+	public virtual Post? Post { get; set; }
 }

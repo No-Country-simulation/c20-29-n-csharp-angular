@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Models;
 
-public class Comentarios
+public partial class Comentarios
 {
-    public int IdComentario { get; set; }
+	[Key]
+	public int IdComentario { get; set; }
 
-    public string Texto { get; set; }
+    public string Texto { get; set; } = null!;
 
     public DateTime? Fecha { get; set; }
 
-    public int? IdPost { get; set; }
+	public int? IdPost { get; set; }
 
-    public int? IdMascota { get; set; }
+	public int? IdUsuario { get; set; }
 
-    public int? IdProducto { get; set; }
+	[ForeignKey("IdPost")]
+	public virtual Post? Post { get; set; }
 
-    //public virtual Mascotas? IdMascotaNavigation { get; set; }
-
-    public virtual Post? IdPostNavigation { get; set; }
-
-    //public virtual Productos? IdProductoNavigation { get; set; }
+	[ForeignKey("IdUsuario")]
+	public virtual Usuario? Usuario { get; set; }
 }

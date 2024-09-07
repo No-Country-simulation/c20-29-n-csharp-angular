@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Models;
 
-public class MeGusta
+public partial class Megusta
 {
-    public int IdMeGusta { get; set; }
+	[Key]
+	public int IdMeGusta { get; set; }
 
-    public int? IdPost { get; set; }
+	public int IdPost { get; set; }
 
-    public int? IdMascota { get; set; }
+    public int? IdUsuario { get; set; }
 
-   // public virtual Mascotas? IdMascotaNavigation { get; set; }
+    public bool? Bborrado { get; set; }
 
-    public virtual Post? IdPostNavigation { get; set; }
-
-   // public virtual Productos? IdProductoNavigation { get; set; }
+	[ForeignKey("IdPost")]
+	public virtual Post Post { get; set; } = null!;
 }

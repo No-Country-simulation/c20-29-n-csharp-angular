@@ -1,39 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Models;
 
-public class Post
+public partial class Post
 {
-    public int IdPost { get; set; }
+	[Key]
+	public int IdPost { get; set; }
 
-    public string Titulo { get; set; }
+    public string Titulo { get; set; } = null!;
 
-    public string TipoPost { get; set; }
+    public string TipoPost { get; set; } = null!;
 
     public string? Descripcion { get; set; }
 
-    public string? FotoVideo { get; set; }
+    public string? MultimediaPost { get; set; }
 
     public DateTime? FechaPublicacion { get; set; }
 
-    public string? Categoria { get; set; }
+    public string? CategoriaPost { get; set; }
 
-    public decimal? Precio { get; set; }
-
-    public string? TipoProveedor { get; set; }
-
-    public string? NumeroIdentificacionFiscal { get; set; }
-
-    public string? CorreoElectronico { get; set; }
-
-    public string? Telefono { get; set; }
-
-    public string? Direccion { get; set; }
-
-    public string? RedesSociales { get; set; }
-
-    public int? IdRefugio { get; set; }
+	public int IdUsuario { get; set; }
 
     public virtual ICollection<Adopciones> Adopciones { get; set; } = new List<Adopciones>();
 
@@ -43,7 +32,8 @@ public class Post
 
     public virtual ICollection<Donaciones> Donaciones { get; set; } = new List<Donaciones>();
 
-    public virtual Refugios? IdRefugioNavigation { get; set; }
+	[ForeignKey("IdUsuario")]
+	public virtual Usuario Usuario { get; set; } = null!;
 
-    public virtual ICollection<MeGusta> MeGusta { get; set; } = new List<MeGusta>();
+    public virtual ICollection<Megusta> Megusta { get; set; } = new List<Megusta>();
 }
