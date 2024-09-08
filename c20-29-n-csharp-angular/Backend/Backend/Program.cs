@@ -20,26 +20,51 @@ namespace Backend
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-			//builder.Services.AddDbContext<AppDbContext>(options =>
-			//	options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-			//	new MySqlServerVersion(new Version(8,0,21))));
+            //builder.Services.AddDbContext<AppDbContext>(options =>
+            //	options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+            //	new MySqlServerVersion(new Version(8,0,21))));
 
-			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-			builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+            //Cors policy
+            builder.Services.AddCors((options) =>
+            {
+                options.AddPolicy("DevCors", (corsBuilder) =>
+                {
+                    corsBuilder.WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8000")
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
 
+                options.AddPolicy("ProdCors", (corsBuilder) =>
+                {
+                    corsBuilder.WithOrigins("https://productionSite.com")
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
+            builder.Services.AddScoped<IComentariosRepositorio, ComentariosRepositorio>();
             var app = builder.Build();
 
-			// Configure the HTTP request pipeline.
-			if (app.Environment.IsDevelopment())
-			{
-				app.UseSwagger();
-				app.UseSwaggerUI();
-			}
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseCors("DevCors");
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            else
+            {
+                app.UseCors("ProdCors");
+                app.UseHttpsRedirection();
+            }
 
-			app.UseHttpsRedirection();
 
-			app.UseAuthorization();
+            app.UseAuthorization();
 
 
 			app.MapControllers();

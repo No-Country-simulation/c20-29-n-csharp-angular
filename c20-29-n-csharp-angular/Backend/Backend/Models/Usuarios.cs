@@ -13,7 +13,7 @@ public class Usuarios
 
     public string CorreoElectronico { get; set; } 
 
-    public string Contraseña { get; set; }
+    public string Contrasenia { get; set; }
 
     public string Perfil { get; set; }
 

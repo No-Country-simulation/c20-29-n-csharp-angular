@@ -5,9 +5,11 @@ namespace Backend.Data
 {
     public class AppDbContext : DbContext
     {
-		public AppDbContext(DbContextOptions options) : base(options)
+        private readonly IConfiguration _configuration;
+        public AppDbContext(IConfiguration configuration)
         {
-		}
+            _configuration = configuration;
+        }
         public DbSet<Adopciones> Adopciones { get; set; }
 
         public DbSet<Apadrinamientos> Apadrinamientos { get; set; }
@@ -24,6 +26,19 @@ namespace Backend.Data
 
         public DbSet<Refugios> Refugios { get; set; }
 
-        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Usuarios> Usuario { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql(
+                    _configuration.GetConnectionString("DefaultConnectionString"),
+                    new MySqlServerVersion(new Version(8, 0, 30)), // Adjust the version based on your MySQL server version
+                    options => options.EnableRetryOnFailure()
+                );
+            }
+        }
+
     }
 }

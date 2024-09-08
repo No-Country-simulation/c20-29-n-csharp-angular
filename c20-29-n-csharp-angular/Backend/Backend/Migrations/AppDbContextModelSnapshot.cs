@@ -252,13 +252,13 @@ namespace Backend.Migrations
                     b.ToTable("Refugios");
                 });
 
-            modelBuilder.Entity("Backend.Models.Usuarios", b =>
+            modelBuilder.Entity("Backend.Models.Usuario", b =>
                 {
                     b.Property<int>("IdUsuario")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Contraseña")
+                    b.Property<string>("Contrasenia")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -279,7 +279,7 @@ namespace Backend.Migrations
 
                     b.HasKey("IdUsuario");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("Backend.Models.Adopciones", b =>

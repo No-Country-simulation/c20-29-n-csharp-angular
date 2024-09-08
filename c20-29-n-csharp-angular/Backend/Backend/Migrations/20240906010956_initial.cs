@@ -47,7 +47,7 @@ namespace Backend.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Usuario",
                 columns: table => new
                 {
                     IdUsuario = table.Column<int>(type: "int", nullable: false)
@@ -284,7 +284,7 @@ namespace Backend.Migrations
                 name: "MeGusta");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "Post");
