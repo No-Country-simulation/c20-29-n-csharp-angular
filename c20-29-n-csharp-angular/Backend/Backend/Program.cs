@@ -27,6 +27,7 @@ namespace Backend
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+            builder.Services.AddScoped<IComentarioRepositorio, ComentarioRepositorio>();
             //Cors policy
             builder.Services.AddCors((options) =>
             {

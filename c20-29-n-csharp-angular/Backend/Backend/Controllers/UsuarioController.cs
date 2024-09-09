@@ -8,17 +8,17 @@ namespace Backend.Controllers
 	[Route("[controller]")]
 	public class UsuarioController : ControllerBase
 	{
-		private readonly AppDbContext _appDbContext;
+		private readonly AppDbContext _comRepositorio;
 
 		public UsuarioController(AppDbContext appDbContext)
         {
-			_appDbContext = appDbContext;
+			_comRepositorio = appDbContext;
 		}
 
 		[HttpGet("ListarUsuarios")]
 		public async Task<IActionResult> ListarUsuarios()
 		{
-			var response = await _appDbContext.Usuario.ToListAsync();
+			var response = await _comRepositorio.Usuario.ToListAsync();
 			return Ok(response);
 		}
     }
