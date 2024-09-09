@@ -1,6 +1,7 @@
 
 using Backend.Data;
 using Backend.Models;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -24,18 +25,23 @@ namespace Backend
                 options.UseMySql(builder.Configuration.GetConnectionString("AppDbConnectionString"),
                 new MySqlServerVersion(new Version(10, 4, 32))));
 
-            //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+			builder.Services.AddTransient<UsuarioService>();
+			builder.Services.AddTransient<ArchivoService>();
+
+			//var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
+			//builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
-            var app = builder.Build();
+			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
-			if (app.Environment.IsDevelopment())
-			{
+			//if (app.Environment.IsDevelopment())
+			//{
 				app.UseSwagger();
 				app.UseSwaggerUI();
-			}
+			//}
+
+			app.UseStaticFiles();
 
 			app.UseHttpsRedirection();
 

@@ -17,9 +17,11 @@ public partial class Usuario
 
     public string Contrasenia { get; set; } = null!;
 
-    public string Perfil { get; set; } = null!;
+	public string Perfil { get; set; } = null!;
 
-    public DateTime? FechaRegistro { get; set; }
+	public string UrlFoto { get; set; } = null!;
+
+	public DateTime? FechaRegistro { get; set; }
 
     [NotMapped]
     public virtual ICollection<Adopciones> Adopciones { get; set; } = new List<Adopciones>();
