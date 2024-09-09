@@ -155,7 +155,7 @@ namespace Backend.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Comentarios",
+                name: "Comentario",
                 columns: table => new
                 {
                     IdComentario = table.Column<int>(type: "int", nullable: false)
@@ -241,7 +241,7 @@ namespace Backend.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comentarios_IdPostNavigationIdPost",
-                table: "Comentarios",
+                table: "Comentario",
                 column: "IdPostNavigationIdPost");
 
             migrationBuilder.CreateIndex(
@@ -275,7 +275,7 @@ namespace Backend.Migrations
                 name: "Apadrinamientos");
 
             migrationBuilder.DropTable(
-                name: "Comentarios");
+                name: "Comentario");
 
             migrationBuilder.DropTable(
                 name: "Donaciones");

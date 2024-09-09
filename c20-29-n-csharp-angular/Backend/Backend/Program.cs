@@ -24,8 +24,8 @@ namespace Backend
             //	options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
             //	new MySqlServerVersion(new Version(8,0,21))));
 
-            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             //Cors policy
             builder.Services.AddCors((options) =>
@@ -47,7 +47,6 @@ namespace Backend
                 });
             });
 
-            builder.Services.AddScoped<IComentariosRepositorio, ComentariosRepositorio>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

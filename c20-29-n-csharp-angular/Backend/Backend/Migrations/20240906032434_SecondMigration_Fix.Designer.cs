@@ -66,7 +66,7 @@ namespace Backend.Migrations
                     b.ToTable("Apadrinamientos");
                 });
 
-            modelBuilder.Entity("Backend.Models.Comentarios", b =>
+            modelBuilder.Entity("Backend.Models.Comentario", b =>
                 {
                     b.Property<int>("IdComentario")
                         .ValueGeneratedOnAdd()
@@ -95,7 +95,7 @@ namespace Backend.Migrations
 
                     b.HasIndex("IdPostNavigationIdPost");
 
-                    b.ToTable("Comentarios");
+                    b.ToTable("Comentario");
                 });
 
             modelBuilder.Entity("Backend.Models.Donaciones", b =>
@@ -303,10 +303,10 @@ namespace Backend.Migrations
                     b.Navigation("IdPostNavigation");
                 });
 
-            modelBuilder.Entity("Backend.Models.Comentarios", b =>
+            modelBuilder.Entity("Backend.Models.Comentario", b =>
                 {
                     b.HasOne("Backend.Models.Post", "IdPostNavigation")
-                        .WithMany("Comentarios")
+                        .WithMany("Comentario")
                         .HasForeignKey("IdPostNavigationIdPost");
 
                     b.Navigation("IdPostNavigation");
@@ -351,7 +351,7 @@ namespace Backend.Migrations
 
                     b.Navigation("Apadrinamientos");
 
-                    b.Navigation("Comentarios");
+                    b.Navigation("Comentario");
 
                     b.Navigation("Donaciones");
 

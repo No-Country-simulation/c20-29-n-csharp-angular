@@ -21,5 +21,5 @@ namespace Backend.Controllers
 			var response = await _appDbContext.Usuario.ToListAsync();
 			return Ok(response);
 		}
-	}
+    }
 }
