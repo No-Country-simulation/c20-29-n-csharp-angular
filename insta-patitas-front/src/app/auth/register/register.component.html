@@ -1,0 +1,69 @@
+<div class="flex min-h-screen p-medium font-inter">
+  <div class="flex flex-col w-full max-w-md mx-auto">
+    <!-- Contenedor del Formulario -->
+    <div class="flex-grow flex items-center justify-center">
+      <div class="w-full bg-white rounded-lg flex flex-col items-center p-base">
+        <div class="flex items-start w-full px-base mb-x-large mt-base sm:px-small sm:mb-small md:px-medium md:mb-medium lg:px-base lg:mb-base">
+          <h1 class="text-[22px] font-semibold leading-[26.63px] text-normal">
+            Registro
+          </h1>
+        </div>
+        <!-- Imagen de Perfil -->
+        <div class="relative mb-medium flex items-center justify-center">
+          <div class="w-24 h-24 sm:w-[120px] sm:h-[120px] bg-primario-light rounded-full flex items-center justify-center">
+            <input type="file" id="profile-pic" (change)="onFileChange($event)" class="absolute inset-0 opacity-0" />
+            <label for="profile-pic" class="cursor-pointer flex items-center justify-center">
+              <img *ngIf="profileImage" [src]="profileImage" alt="Profile Image" class="w-24 h-24 sm:w-[120px] sm:h-[120px] rounded-full object-cover" />
+              <img *ngIf="!profileImage" src="../../assets/images/photo.svg" alt="Profile Icon" class="w-8 h-8 text-gray-500" />
+            </label>
+          </div>
+        </div>
+        <!-- Formulario -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-full flex flex-col space-y-4">
+          <div>
+            <input id="username" type="text" formControlName="username" placeholder="Nombre de Usuario" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-normal focus:border-normal sm:text-sm font-inter" />
+            <div *ngIf="username.invalid && (username.dirty || username.touched || submitted)" class="text-red-600 text-sm mt-1">
+              <small *ngIf="username.errors?.['required']">El nombre de usuario es requerido.</small>
+              <small *ngIf="username.errors?.['minlength']">El nombre de usuario debe tener al menos 3 caracteres.</small>
+            </div>
+          </div>
+          <div>
+            <input id="email" type="email" formControlName="email" placeholder="Correo Electrónico" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-normal focus:border-normal sm:text-sm font-inter" />
+            <div *ngIf="email.invalid && (email.dirty || email.touched || submitted)" class="text-red-600 text-sm mt-1">
+              <small *ngIf="email.errors?.['required']">El correo electrónico es requerido.</small>
+              <small *ngIf="email.errors?.['email']">Debe ingresar un correo electrónico válido.</small>
+            </div>
+          </div>
+          <div>
+            <input id="password" type="password" formControlName="password" placeholder="Contraseña" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-normal focus:border-normal sm:text-sm font-inter" />
+            <div *ngIf="password.invalid && (password.dirty || password.touched || submitted)" class="text-red-600 text-sm mt-1">
+              <small *ngIf="password.errors?.['required']">La contraseña es requerida.</small>
+              <small *ngIf="password.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</small>
+            </div>
+          </div>
+          <div>
+            <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirmar Contraseña" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-normal focus:border-normal sm:text-sm font-inter" />
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched || submitted)" class="text-red-600 text-sm mt-1">
+              <small *ngIf="confirmPassword.errors?.['required']">La confirmación de contraseña es requerida.</small>
+              <small *ngIf="confirmPassword.errors?.['mustMatch']">Las contraseñas deben coincidir.</small>
+            </div>
+          </div>
+          <div class="flex items-center mt-2 justify-end">
+            <input id="terms" type="checkbox" formControlName="terms" class="mr-2 custom-checkbox" />
+            <label for="terms" class="text-normal-neutro font-inter text-lg font-semibold tracking-wide custom-label">
+              Términos y condiciones
+            </label>
+            <div *ngIf="terms.invalid && (terms.dirty || terms.touched || submitted)" class="text-red-600 text-sm mt-1">
+              <small>Debes aceptar los términos y condiciones.</small>
+            </div>
+          </div>
+        </form>
+        <div class="w-full flex justify-center mt-x-large">
+          <button type="submit" (click)="onSubmit()" class="w-full py-2 px-4 bg-normal text-white font-semibold rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-normal hover:bg-normal-hover focus:ring-offset-2">
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

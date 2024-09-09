@@ -11,14 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  submitted = false;
+  profileImage: string | ArrayBuffer | null = null;
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
       terms: [false, Validators.requiredTrue]
+    }, {
+      validators: this.mustMatch('password', 'confirmPassword')
     });
   }
 
@@ -43,11 +47,42 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
+    this.submitted = true;
     if (this.registerForm.valid) {
       console.log('Register form data:', this.registerForm.value);
-      // Llama al servicio para enviar los datos del formulario
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.profileImage = reader.result;
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  mustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.get(controlName);
+      const matchingControl = formGroup.get(matchingControlName);
+
+      if (matchingControl?.errors && !matchingControl.errors['mustMatch']) {
+        return;
+      }
+
+      if (control?.value !== matchingControl?.value) {
+        matchingControl?.setErrors({ mustMatch: true });
+      } else {
+        matchingControl?.setErrors(null);
+      }
+    };
   }
 }

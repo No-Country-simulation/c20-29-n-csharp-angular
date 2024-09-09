@@ -10,6 +10,7 @@ module.exports = {
         'normal-hover': '#4c75dd',
         'primario-light': '#CAD8FC',
         'normal-neutro': '#8e8e93',
+        'normal-verde':'#23c197',
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'], 

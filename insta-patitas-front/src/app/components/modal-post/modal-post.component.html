@@ -1,0 +1,48 @@
+<div class="fixed inset-0 flex justify-center items-center z-50">
+    <div class="bg-white rounded-3xl p-6 w-80 shadow-lg">
+        <h2 class="text-blue-500 text-[16px] font-bold mb-4">
+            ¡Gracias por animarte a darnos una Patita. Cuéntanos, ¿Cómo quieres ayudarnos?
+        </h2>
+
+        <div class="flex items-center mb-2">
+            <input type="checkbox" id="adoptando" class="custom-checkbox mr-2">
+            <label for="adoptando">Adoptando</label>
+            <button class="ml-auto" (click)="showInfo('adoptando')">
+                <img src="./../assets/images/help-circle.svg" alt="Ayuda" class="w-5 h-5">
+            </button>
+        </div>
+
+        <div *ngIf="info === 'adoptando'" class="bg-white p-4 rounded-lg shadow-md text-normal-verde mb-2 text-[12px] px-8">
+            Tienes la oportunidad de adoptar a un peludito y cambiarle la vida para siempre. Todas las opciones quedarán cubiertas con tu ayuda.
+        </div>
+
+        <div class="flex items-center mb-2">
+            <input type="checkbox" id="donando" class="custom-checkbox mr-2">
+            <label for="donando">Donando</label>
+            <button class="ml-auto" (click)="showInfo('donando')">
+                <img src="./../assets/images/help-circle.svg" alt="Ayuda" class="w-5 h-5">
+            </button>
+        </div>
+
+        <div *ngIf="info === 'donando'" class="bg-white p-4 rounded-lg shadow-md text-normal-verde mb-2 text-[12px] px-8">
+            Puedes escoger entre donar dinero, alimentos o insumos para alguno de los refugios.
+        </div>
+
+        <div class="flex items-center mb-4">
+            <input type="checkbox" id="apadrinando" class="custom-checkbox mr-2">
+            <label for="apadrinando">Apadrinando</label>
+            <button class="ml-auto" (click)="showInfo('apadrinando')">
+
+                <img src="./../assets/images/help-circle.svg" alt="Ayuda" class="w-5 h-5">
+            </button>
+        </div>
+
+        <div *ngIf="info === 'apadrinando'" class="bg-white p-4 rounded-lg shadow-md text-normal-verde mb-2 text-[12px] px-8">
+            Tendrás la oportunidad de apadrinar a uno de los animalitos con el pago de su esterilización o tratamiento médico.
+        </div>
+
+        <button class="bg-blue-500 text-white w-full py-2 rounded-md">
+            Continuar
+        </button>
+    </div>
+</div>
