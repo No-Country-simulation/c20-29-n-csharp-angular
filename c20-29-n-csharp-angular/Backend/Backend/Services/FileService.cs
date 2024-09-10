@@ -29,7 +29,7 @@ namespace Backend.Services
 			}
 
 			string nombreArchivo = ObtenerNombreArchivo(archivo, true);
-			string rutaConNombreArchivo = $"{ruta}\\{nombreArchivo}";
+			string rutaConNombreArchivo = Path.Combine(ruta, nombreArchivo);
 
 			using (var fileStream = new FileStream(rutaConNombreArchivo, FileMode.Create))
 			{

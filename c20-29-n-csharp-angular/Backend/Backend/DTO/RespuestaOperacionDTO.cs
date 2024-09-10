@@ -2,35 +2,35 @@
 {
 	public class RespuestaOperacionDTO
 	{
-		public bool EsExitoso { get; set; }
-		public string Mensaje { get; set; }
-		public dynamic Datos { get; set; }
+		public int State { get; set; }
+		public string Message { get; set; }
+		public dynamic Data { get; set; }
 
 		public static RespuestaOperacionDTO Exitoso()
 		{
-			return new RespuestaOperacionDTO() { EsExitoso = true };
+			return new RespuestaOperacionDTO() { State = 200 };
 		}
 
-		public static RespuestaOperacionDTO ExitoConDatos(dynamic Datos = null)
+		public static RespuestaOperacionDTO ExitoConDatos(dynamic Data = null)
 		{
-			return new RespuestaOperacionDTO() { EsExitoso = true, Datos = Datos };
+			return new RespuestaOperacionDTO() { State = 200, Data = Data };
 		}
 
 		public static RespuestaOperacionDTO FalloConMensaje(string Mensaje)
 		{
-			return new RespuestaOperacionDTO() { EsExitoso = false, Mensaje = Mensaje };
+			return new RespuestaOperacionDTO() { State = 400, Message = Mensaje };
 		}
 	}
 
 	public class RespuestaOperacionDTO<S> : RespuestaOperacionDTO
 	{
-		public new bool EsExitoso { get; set; }
-		public new string Mensaje { get; set; }
-		public new S Datos { get; set; }
+		public int State { get; set; }
+		public string Message { get; set; }
+		public new S Data { get; set; }
 
-		public static RespuestaOperacionDTO<S> ExitoConDatos(S Datos)
+		public static RespuestaOperacionDTO<S> ExitoConDatos(S Data)
 		{
-			return new RespuestaOperacionDTO<S>() { EsExitoso = true, Datos = Datos };
+			return new RespuestaOperacionDTO<S>() { State = 200, Data = Data };
 		}
 	}
 }
