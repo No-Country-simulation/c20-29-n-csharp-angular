@@ -1,10 +1,9 @@
-
 .custom-checkbox {
     -webkit-appearance: none;
     appearance: none; 
-    width: 20px;
-    height: 20px;
-    border: 1px solid #3b82f6; 
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid #3b82f6; 
     border-radius: 4px; 
     background-color: transparent;
     cursor: pointer;
@@ -12,23 +11,20 @@
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-
 .custom-checkbox:checked {
-    background-color: #3b82f6; 
+    background-color: transparent; 
     border-color: #3b82f6; 
 }
-
 
 .custom-checkbox:checked::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 12px;
-    height: 12px;
-    background-color: #ffffff;
-    border-radius: 2px; 
-    transform: translate(-50%, -50%); 
+    width: 5px; 
+    height: 7px;
+    border: solid #22c55e; 
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
     display: block;
 }
-
