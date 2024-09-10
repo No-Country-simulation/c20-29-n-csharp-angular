@@ -9,14 +9,14 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'product-form',
+  selector: 'app-product-form',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, JsonPipe],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css',
 })
 export class ProductFormComponent implements OnInit {
-  productForm: FormGroup;
+  productForm: FormGroup = new FormGroup({});
 
   // Inyectamos la clase FormBuilder para construir el formulario(FormGroup)
   constructor(private formBuilder: FormBuilder) {}
