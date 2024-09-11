@@ -29,6 +29,7 @@ namespace Backend
 			builder.Services.AddTransient<ArchivoService>();
 
             builder.Services.AddScoped<IComentariosService, ComentarioService>();
+            builder.Services.AddScoped<IPostService, PostService>();
 
             //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
             //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));

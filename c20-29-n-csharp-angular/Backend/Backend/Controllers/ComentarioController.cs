@@ -7,7 +7,7 @@ using Serilog;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class ComentarioController : ControllerBase
     {
         private readonly IComentariosService _comRepositorio;
