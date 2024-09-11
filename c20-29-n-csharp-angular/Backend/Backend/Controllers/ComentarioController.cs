@@ -10,8 +10,8 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class ComentarioController : ControllerBase
     {
-        private readonly IComentarioRepositorio _comRepositorio;
-        public ComentarioController(IComentarioRepositorio comentarioRepositorio)
+        private readonly IComentariosService _comRepositorio;
+        public ComentarioController(IComentariosService comentarioRepositorio)
         {
             _comRepositorio = comentarioRepositorio;
         }
@@ -49,7 +49,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("PostComentario")]
-        public async Task<IActionResult> PostComentario([FromBody] Comentario comentario)
+        public async Task<IActionResult> PostComentario([FromBody] Comentarios comentario)
         {
             var comentarioToDb = await _comRepositorio.PostComentarioAsync(comentario);
 
@@ -78,7 +78,7 @@ namespace Backend.Controllers
         }
 
         [HttpPut("PutComentarioAsync/{idComentario}")]
-        public async Task<IActionResult> PutComentario(int idComentario,[FromBody] Comentario comentario)
+        public async Task<IActionResult> PutComentario(int idComentario,[FromBody] Comentarios comentario)
         {
 
             try
