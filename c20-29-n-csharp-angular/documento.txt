@@ -1,3 +1,7 @@
 Eliana Mendez
 Felipe Hernández
+<<<<<<< HEAD
+Adonis Paniagua
+=======
 Katerina Campos
+>>>>>>> 0754bcf47ba2fed710fbf0cd4d2d7ae10f58f942
