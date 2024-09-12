@@ -1,0 +1,76 @@
+<!-- Formulario de Productos o Servicios -->
+<div class="flex w-full">
+  <form [formGroup]="productForm" class="flex flex-col flex-wrap justify-evenly w-4/5 mr-auto p-3 mx-auto min-w-96 ">
+    <h2 class=" mx-auto text-blue-800 font-bold text-2xl m-2 mt-5 w-4/5">Formulario de Productos o Servicios</h2>
+    <!-- <p>{{ productForm.value| json}}</p> -->
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Nombre o razon social" formControlName="nameOrCompanyName">
+
+
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Producto o servicio que ofrece" formControlName="productOrService">
+
+
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text" placeholder="Telefono"
+      formControlName="telephone" />
+
+
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Correo electronico" formControlName="email">
+    <h3 class=" mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">Detalles del los servicions veterinarios (Si
+      aplica)</h3>
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Numero de licencia veterinaria" formControlName="vetLicence">
+
+
+    <textarea class="block border border-gray-500 m-2 mt-5 rounded-md w-4/5 my-1 mx-auto resize-none" cols="30"
+      rows="10" placeholder="Describa brevemente sus servicios" formControlName="servicesDescription"></textarea>
+    <h3 class=" mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">Detalles del los productos que comercializa (Si
+      aplica)</h3>
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Numero de identificacion fiscal" formControlName="taxIdentification">
+
+
+    <textarea class="block border border-gray-500 m-2 mt-5 rounded-md w-4/5 my-1 mx-auto resize-none" cols="30"
+      rows="10" placeholder="Describa brevemente sus productos" formControlName="productsDescription"></textarea>
+    <h3 class=" mx-auto text-blue-800 font-bold text-xl m-2  mt-5 w-4/5">Referencias</h3>
+    <span class="mx-auto block m-2 mt-2 w-4/5 mr-auto text-blue-400">Ingresa los datos de una personas que puedan hablar
+      acerca de los servicios o productos que ofrece</span>
+
+
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Nombre y Apellido" formControlName="personReference">
+
+
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text" placeholder="Telefono"
+      formControlName="phoneReference">
+    <h3 class=" mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">Información adicional</h3>
+    <input class="block border border-gray-500 rounded-md w-4/5 my-1 mx-auto p-1" type="text"
+      placeholder="Red social o pagina web" formControlName="socialNetwork">
+
+    <h3 class=" mx-auto text-blue-800 font-bold text-xl m-2 mt-5 w-4/5">Documentacion y verificación</h3>
+    <span class="mx-auto block m-2 mt-2 w-4/5 mr-auto text-blue-400">Sube un documento en formato PDF que incluya su
+      licencia para ejercer la profesión de veterinario y/o su numero
+      de
+      identificación fiscal en el caso de venta de productos.</span>
+
+
+    <div
+      class="flex flex-row justify-center items-center border-2 border-dashed border-gray-500 rounded-md w-4/5 h-40 my-1 mx-auto text-center">
+      <input class="font-bold p-2 w-4/6" type="file" formControlName="documentation">
+    </div>
+
+    <div class="flex  w-4/5 my-7 mx-auto p-1">
+      <input class="block mr-4 min-w-6" type="checkbox" formControlName="termsConditions">
+      <span class="font-bold">Declaro que la información suministrada es verdadera y acepto los términos y condiciones
+        del uso de la
+        aplicación
+        Instapatitas.</span>
+    </div>
+
+
+    <button type="submit"
+      class="block rounded-md w-4/5 my-1 mx-auto text-white bg-blue-700 hover:bg-blue-800 p-2">Enviar
+      Formulario</button>
+  </form>
+</div>
