@@ -25,5 +25,6 @@ public partial class Productoservicio
 
     public string? Direccion { get; set; }
 
-    public string? RedesSociales { get; set; }
+	public string? RedesSociales { get; set; }
+	public DateTime FechaRegistro { get; set; }
 }
