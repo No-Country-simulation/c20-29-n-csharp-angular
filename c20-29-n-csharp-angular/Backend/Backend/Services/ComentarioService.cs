@@ -1,5 +1,6 @@
 ﻿using Backend.Data;
 using Backend.Models;
+using Backend.Services.interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,12 +33,16 @@ namespace Backend.Services
         {
             _comRepositorio.Add(endidad);
         }
+
+
         public async Task<Comentarios> UnicoComentario(int IdComentario)
         {
             Comentarios Comentarios = await _comRepositorio.Comentarios.FindAsync(IdComentario);
 
             return Comentarios;
         }
+
+
         public bool ExisteComentario(int IdComentario)
         {
             return _comRepositorio.Comentarios.Any(e => e.IdComentario == IdComentario);
