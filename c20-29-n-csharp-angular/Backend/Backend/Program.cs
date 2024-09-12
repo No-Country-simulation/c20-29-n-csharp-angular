@@ -28,13 +28,14 @@ namespace Backend
 			builder.Services.AddTransient<UsuarioService>();
 			builder.Services.AddTransient<ArchivoService>();
 
-            builder.Services.AddScoped<IComentariosService, ComentarioService>();
+			builder.Services.AddScoped<IComentariosService, ComentarioService>();
+			builder.Services.AddScoped<IRefugioService, RefugioService>();
 
-            //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+			//var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
+			//builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
-            var app = builder.Build();
+			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			//if (app.Environment.IsDevelopment())
