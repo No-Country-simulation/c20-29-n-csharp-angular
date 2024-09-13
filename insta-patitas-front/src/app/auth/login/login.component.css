@@ -1,0 +1,36 @@
+@keyframes logo {
+  0% {
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    display: none;
+  }
+} 
+ 
+.logo{
+  animation: logo 4s forwards;
+} 
+ 
+ 
+ /* Android */
+
+@media (max-width: 768px) {
+    .p-medium {
+      padding: 16px;
+    }
+    .mb-medium {
+      margin-bottom: 16px; 
+    }
+  }
+
+  /* iOS */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .p-medium {
+      padding: 22px; 
+    }
+    .mb-medium {
+      margin-bottom: 22px; 
+    }
+  }
+  
