@@ -48,22 +48,24 @@ namespace Backend.Controllers
         }
 
         [HttpPost("PostPost")]
-        public async Task<IActionResult> PostPost([FromBody] Post Post)
+        public async Task<IActionResult> PostPost([FromForm] Post post, [FromForm] IFormFileCollection listaArchivos)
         {
-            var PostToDb = await _postRepositorio.PostPostAsync(Post);
-
             try
             {
-
-                if (PostToDb != null)
+                if (post == null || listaArchivos == null)
                 {
-                    return Ok(
-                        new
-                        {
-                            Message = $"El Post ID: {PostToDb.IdPost} se ha creado correctamente.",
-                            Coemntario = PostToDb
-                        }
-                        );
+                    return BadRequest("Post model or files are null.");
+                }
+
+                var postToDb = await _postRepositorio.PostPostAsync(post, listaArchivos);
+
+                if (postToDb != null)
+                {
+                    return Ok(new
+                    {
+                        Message = "El Post se ha creado correctamente.",
+                        Comentario = postToDb
+                    });
                 }
                 else
                 {

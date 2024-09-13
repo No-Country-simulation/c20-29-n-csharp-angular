@@ -33,14 +33,44 @@ namespace Backend
 
             //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
             //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+            //Cors policy
+            builder.Services.AddCors((options) =>
+            {
+                options.AddPolicy("DevCors", (corsBuilder) =>
+                {
+                    corsBuilder.WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8000", "http://127.0.0.1:8080")
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
 
+                options.AddPolicy("ProdCors", (corsBuilder) =>
+                {
+                    corsBuilder.WithOrigins("https://productionSite.com")
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
             var app = builder.Build();
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseCors("DevCors");
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            else
+            {
+                app.UseCors("ProdCors");
+                app.UseHttpsRedirection();
+            }
 
-			// Configure the HTTP request pipeline.
-			//if (app.Environment.IsDevelopment())
-			//{
-				app.UseSwagger();
+            // Configure the HTTP request pipeline.
+            //if (app.Environment.IsDevelopment())
+            //{
+            app.UseSwagger();
 				app.UseSwaggerUI();
 			//}
 

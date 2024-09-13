@@ -1,4 +1,5 @@
 ﻿using Backend.Data;
+using Backend.DTO;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace Backend.Services
         {
             return _postRepositorio.SaveChanges() > 0;
         }
-        public async Task<Post> EliminarEntidad(int idPost)
+        public async Task<Post> EliminarEntidad(int? idPost)
         {
             Post Post = await UnicoPost(idPost);
             if (Post != null)
@@ -29,13 +30,13 @@ namespace Backend.Services
         {
             _postRepositorio.Add(endidad);
         }
-        public async Task<Post> UnicoPost(int idPost)
+        public async Task<Post> UnicoPost(int? idPost)
         {
             Post Post = await _postRepositorio.Post.FindAsync(idPost);
 
             return Post;
         }
-        public bool ExistePost(int idPost)
+        public bool ExistePost(int? idPost)
         {
             return _postRepositorio.Post.Any(e => e.IdPost == idPost);
         }
@@ -46,7 +47,7 @@ namespace Backend.Services
             var Post = await _postRepositorio.Post.ToListAsync();
             return Post;
         }
-        public async Task<Post> GetUnicoPostAsync(int idPost)
+        public async Task<Post> GetUnicoPostAsync(int? idPost)
         {
             try
             {
@@ -62,36 +63,26 @@ namespace Backend.Services
                 throw new Exception($"No se encontro el Post. ${ex.Message}");
             }
         }
-        public async Task<Post> PostPostAsync(Post post)
+        public async Task<Post> PostPostAsync(Post post, IFormFileCollection listaArchivos)
         {
-            if (
-                post == null ||
-                post.IdPost == 0 ||
-                post.Titulo == null ||
-                post.TipoPost == null ||
-                post.Descripcion == null ||
-                post.IdUsuario == 0
-                )
+            if (listaArchivos.Count > 0)
             {
-                throw new Exception("Alguna de la data del Post es nula.");
+                var file = listaArchivos[0];
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    post.MultimediaPost = memoryStream.ToArray();
+                }
             }
 
             try
             {
-                Post postToDb = new Post();
+                post.IdPost = null; 
 
-                postToDb.Titulo = post.Titulo;
-                postToDb.TipoPost = post.TipoPost;
-                postToDb.Descripcion = post.Descripcion;
-                postToDb.IdUsuario = post.IdUsuario;
-                postToDb.MultimediaPost = post.MultimediaPost;
-
-
-
-                AgregarEntidad(postToDb);
+                AgregarEntidad(post);
                 if (GuardarCambios())
                 {
-                    return postToDb;
+                    return post;
                 }
                 else
                 {
@@ -100,11 +91,11 @@ namespace Backend.Services
             }
             catch (DbUpdateException ex)
             {
-
-                throw new Exception("Alguna de la data del Post es nula.");
+                throw new Exception("Error al guardar el Post: " + ex.Message);
             }
         }
-        public async Task<Post> PutPostAsync(int idPost, Post post)
+
+        public async Task<Post> PutPostAsync(int? idPost, Post post)
         {
             Post postOnDb = await UnicoPost(idPost);
 
@@ -143,7 +134,7 @@ namespace Backend.Services
                 }
             }
         }
-        public async Task<Post> DeletePost(int idPost)
+        public async Task<Post> DeletePost(int? idPost)
         {
             try
             {
