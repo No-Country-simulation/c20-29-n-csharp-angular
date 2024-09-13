@@ -33,14 +33,14 @@ namespace Backend.Controllers
 		}
 
 		[HttpPost("")]
-		public async Task<IActionResult> RegistrarUsuario(Usuario usuario)
+		public async Task<IActionResult> RegistrarUsuario([FromBody] Usuario usuario)
 		{
 			var response = await _usuarioService.RegistrarUsuario(usuario);
 			return Ok(response);
 		}
 
 		[HttpPut("")]
-		public async Task<IActionResult> ActualizarUsuario(Usuario usuario)
+		public async Task<IActionResult> ActualizarUsuario([FromBody] Usuario usuario)
 		{
 			var data = await _usuarioService.ActualizarUsuario(usuario);
 			var response = RespuestaOperacionDTO.ExitoConDatos(data);

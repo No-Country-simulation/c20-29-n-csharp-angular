@@ -1,7 +1,7 @@
 ﻿using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Backend.Data
+namespace Backend.Services.interfaces
 {
     public interface IComentariosService
     {

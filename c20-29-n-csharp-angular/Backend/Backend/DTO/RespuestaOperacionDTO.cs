@@ -16,6 +16,11 @@
 			return new RespuestaOperacionDTO() { State = 200, Data = Data };
 		}
 
+		public static RespuestaOperacionDTO RegistroExitosoConDatos(dynamic Data = null)
+		{
+			return new RespuestaOperacionDTO() { State = 201, Data = Data };
+		}
+
 		public static RespuestaOperacionDTO FalloConMensaje(string Mensaje)
 		{
 			return new RespuestaOperacionDTO() { State = 400, Message = Mensaje };

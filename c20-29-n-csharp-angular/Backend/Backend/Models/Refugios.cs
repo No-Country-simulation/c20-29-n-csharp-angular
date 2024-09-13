@@ -28,4 +28,8 @@ public partial class Refugios
     public string? RedesSociales { get; set; }
 
     public string? TestimoniosReferencias { get; set; }
+
+	public int IdTipoOrganizacion { get; set; }
+
+	public DateTime FechaRegistro { get; set; }
 }

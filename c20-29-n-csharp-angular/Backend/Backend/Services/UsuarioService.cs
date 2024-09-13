@@ -42,7 +42,7 @@ namespace Backend.Services
 
 			_appDbContext.Usuario.Add(usuario);
 			await _appDbContext.SaveChangesAsync();
-			return RespuestaOperacionDTO.ExitoConDatos(usuario);
+			return RespuestaOperacionDTO.RegistroExitosoConDatos(usuario);
 		}
 
 		public async Task<Usuario> ActualizarUsuario(Usuario usuario)

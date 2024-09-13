@@ -2,6 +2,9 @@
 using Backend.Data;
 using Backend.Models;
 using Backend.Services;
+using Backend.Services.interfaces;
+using Backend.Servicios;
+using Backend.Servicios.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -27,22 +30,15 @@ namespace Backend
 
 			builder.Services.AddTransient<UsuarioService>();
 			builder.Services.AddTransient<ArchivoService>();
+      builder.Services.AddScoped<IComentariosService, ComentarioService>();
+      builder.Services.AddScoped<IDonacionesService, DonacionesService>();
+      builder.Services.AddScoped<IComentariosService, ComentarioService>();
+			builder.Services.AddScoped<IRefugioService, RefugioService>();
+			builder.Services.AddScoped<IProductoServicioService, ProductoServicioService>();
 
-            builder.Services.AddScoped<IComentariosService, ComentarioService>();
-            builder.Services.AddScoped<IPostService, PostService>();
 
-            //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-            //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-            //Cors policy
-            builder.Services.AddCors((options) =>
-            {
-                options.AddPolicy("DevCors", (corsBuilder) =>
-                {
-                    corsBuilder.WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8000", "http://127.0.0.1:8080")
-                    .AllowCredentials()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-                });
+			//var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
+			//builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
                 options.AddPolicy("ProdCors", (corsBuilder) =>
                 {
@@ -53,19 +49,7 @@ namespace Backend
                 });
             });
 
-            var app = builder.Build();
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseCors("DevCors");
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-            else
-            {
-                app.UseCors("ProdCors");
-                app.UseHttpsRedirection();
-            }
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())

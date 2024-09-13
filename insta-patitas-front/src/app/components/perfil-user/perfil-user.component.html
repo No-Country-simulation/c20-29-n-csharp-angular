@@ -1,0 +1,48 @@
+<main class="container-main">
+  <header class="header">
+    <figure class="logo">
+      <img src="img/LOGO.svg" alt="Logo">
+    </figure>
+    <figure class="photo-user">
+      <img src="img/Abuela.jpg" alt="Foto de perfil">
+    </figure>
+    <article>
+      <h2>Tienda de mascotas</h2>
+      <p class="descripcion">Venta de artículos y alimentos para mascotas con gran variedad de precios.</p>
+
+      <a href="">Productos o Servicios</a>
+
+      <section class="statistics">
+        <article>
+          <p>
+            200
+            <b>
+              publicaciones
+            </b>
+          </p>
+        </article>
+        <article>
+          <p>
+            2000
+            <b>
+              seguidores
+            </b>
+          </p>
+        </article>
+        <article>
+          <p>
+            400
+            <b>
+              siguiendo
+            </b>
+          </p>
+        </article>
+      </section>
+    </article>
+  </header>
+  <section class="content">
+    @for (item of img; track $index) {
+      <img src="{{item}}" alt="images-ramdon">
+    }
+  </section>
+</main>
