@@ -115,7 +115,7 @@ namespace Backend.Controllers
                 return Ok(
                     new
                     {
-                        Message = $"El comentario con el ID {idComentario} ha sido eliminado.",
+                        Message = $"El comentario con el ID {idComentario} ha sido eliminado",
                         Comentario = comentario
                     }
                     );
