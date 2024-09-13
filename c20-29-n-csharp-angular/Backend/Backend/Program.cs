@@ -37,8 +37,6 @@ namespace Backend
             builder.Services.AddScoped<IProductoServicioService, ProductoServicioService>();
             builder.Services.AddScoped<IPostService, PostService>();
 
-            builder.Services.AddScoped<IPostService, PostService>();
-
             //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
             //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
             //Cors policy
