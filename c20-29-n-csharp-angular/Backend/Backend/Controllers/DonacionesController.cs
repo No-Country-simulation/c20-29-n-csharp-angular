@@ -1,4 +1,5 @@
-﻿using Backend.Models;
+﻿using Backend.DTO;
+using Backend.Models;
 using Backend.Servicios.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,117 +18,42 @@ namespace Backend.Controllers
             _donacionesService = donacionesService;
         }
 
-        [HttpGet("GetDonaciones")]
-        public async Task<IActionResult> GetDonaciones()
+        [HttpGet("")]
+        public async Task<IActionResult> ListarDonaciones()
         {
-            try
-            {
-                var response = await _donacionesService.GetDonaciones();
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error:" + ex.Message);
-            }
-
+            var data = await _donacionesService.ListarDonaciones();
+            var response = RespuestaOperacionDTO.ExitoConDatos(data);
+            return Ok(response);
         }
 
-        [HttpGet("GetDonacionById/{idDonacion}")]
-        public async Task<IActionResult> GetDonacionById(int idDonacion)
+        [HttpGet("{idDonacion}")]
+        public async Task<IActionResult> ObtenerDonacionById(int idDonacion)
         {
-
-            try
-            {
-                var donacion = await _donacionesService.GetDonacionById(idDonacion);
-                if (donacion == null)
-                {
-                    return NotFound("No se encontro el la doncaciom.");
-                }
-                return Ok(donacion);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error:" + ex.Message);
-            }
+            var data = await _donacionesService.ObtenerDonacionById(idDonacion);
+            var response = RespuestaOperacionDTO.ExitoConDatos(data);
+            return Ok(response);
         }
 
-        [HttpPost("PostDonacion")]
-        public async Task<IActionResult> PostDonacion([FromBody] Donaciones donacion)
+        [HttpPost("")]
+        public async Task<IActionResult> RegistrarDonaciones([FromBody] Donaciones Donaciones)
         {
-
-
-            var donaciondb = await _donacionesService.PostDonacion(donacion);
-
-            try
-            {
-
-                if (donaciondb != null)
-                {
-                    return Ok(
-                        new
-                        {
-                            Message = $"El comentario ID: {donaciondb.IdDonacion} se ha creado correctamente.",
-                            donacion = donaciondb
-                        }
-                        );
-                }
-                else
-                {
-                    return BadRequest("Alguna de la data del comentario es nula.");
-                }
-            }
-            catch (DbUpdateException ex)
-            {
-                return StatusCode(500, "Internal server error: " + ex.Message);
-            }
+            var response = await _donacionesService.RegistrarDonaciones(Donaciones);
+            return Ok(response);
         }
 
-        [HttpPut("UpdateDonacion/{idDonacion}")]
-        public async Task<IActionResult> UpdateDonacion(int idDonacion, [FromBody] Donaciones donacion)
+        [HttpPut("")]
+        public async Task<IActionResult> ActualizarDonaciones([FromBody] Donaciones Donaciones)
         {
-            try
-            {
-                var donacionActualizada = await _donacionesService.UpdateDonacion(idDonacion, donacion);
-                if (donacionActualizada != null)
-                {
-                    return Ok(
-                        new
-                        {
-                            Message = $"idDonacion: {idDonacion} ha sido modificado.",
-                            donacion = donacionActualizada,
-                        });
-                }
-                else
-                {
-                    return NotFound("Donacion NotFound.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error: " + ex.Message);
-
-            }
+            var data = await _donacionesService.ActualizarDonaciones(Donaciones);
+            var response = RespuestaOperacionDTO.ExitoConDatos(data);
+            return Ok(response);
         }
-        [HttpDelete("DeleteDonacion/{idDonacion}")]
-        public async Task<IActionResult> DeleteDonacion(int idDonacion)
+
+        [HttpDelete("{idDonacion}")]
+        public async Task<IActionResult> EliminarDonaciones(int idDonacion)
         {
-            try
-            {
-                var donacion = await _donacionesService.DeleteDonacion(idDonacion);
-
-                return Ok(
-                    new
-                    {
-                        Message = $"idDonacion {idDonacion} ha sido eliminado",
-                        donacion = donacion
-                    }
-                    );
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(500, "Internal server error: " + ex.Message);
-            }
+            var response = await _donacionesService.EliminarDonaciones(idDonacion);
+            return Ok(response);
         }
     }
 }
