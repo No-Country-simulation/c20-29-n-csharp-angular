@@ -58,6 +58,11 @@ namespace Backend.Services
 		public async Task<FileHelper> ObtenerArchivo(string nombre)
 		{
 			var filePath = Path.Combine(Directory.GetCurrentDirectory(), _carpeta, nombre);
+			if (!File.Exists(filePath))
+			{
+				return null;
+			}
+
 			var fileBytes = await File.ReadAllBytesAsync(filePath);
 
 			var provider = new FileExtensionContentTypeProvider();

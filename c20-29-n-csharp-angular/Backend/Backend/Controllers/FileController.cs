@@ -26,6 +26,8 @@ namespace Backend.Controllers
 		public async Task<IActionResult> ObtenerArchivo(string nombre)
 		{
 			FileHelper response = await _archivoService.ObtenerArchivo(nombre);
+			if (response is null)
+				return NotFound();
 			//return File(response.FileBytes, response.MimeType, response.FileName);
 			return File(response.FileBytes, response.MimeType);
 		}
