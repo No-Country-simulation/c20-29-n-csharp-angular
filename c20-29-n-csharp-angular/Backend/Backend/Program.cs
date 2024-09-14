@@ -51,11 +51,8 @@ namespace Backend
                 });
 
                 options.AddPolicy("ProdCors", (corsBuilder) =>
-                {
-                    corsBuilder.WithOrigins("https://productionSite.com")
-                    .AllowCredentials()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
+				{
+					corsBuilder.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials();
                 });
             });
 
