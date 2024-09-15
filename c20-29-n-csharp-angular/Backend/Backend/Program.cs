@@ -37,7 +37,7 @@ namespace Backend
 			builder.Services.AddScoped<IProductoServicioService, ProductoServicioService>();
             builder.Services.AddScoped<ITipoDocumentoService, TipoDocumentoService>();
             builder.Services.AddScoped<IMeGustaService, MeGustaService>();
-
+            builder.Services.AddScoped<IApadrinamientosService, ApadrinamientosService>();
             //var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
             //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 

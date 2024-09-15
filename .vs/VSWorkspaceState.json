@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\c20-29-n-csharp-angular",
+    "\\c20-29-n-csharp-angular\\Backend"
   ],
-  "SelectedNode": "\\Backend.sln",
+  "SelectedNode": "\\c20-29-n-csharp-angular\\Backend\\Backend.sln",
   "PreviewInSolutionExplorer": false
 }
