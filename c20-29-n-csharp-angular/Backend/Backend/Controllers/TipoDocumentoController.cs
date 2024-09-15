@@ -15,7 +15,7 @@ namespace Backend.Controllers
         {
             _TipoDocumentoService = TipoDocumentoService;   
         }
-        [HttpGet("")]
+        [HttpGet("GetListaTipodocumentos")]
         public async Task<IActionResult> ListarTipodocumentos()
         {
             var data = await _TipoDocumentoService.ListarTipodocumentos();
@@ -23,7 +23,7 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{IdTipoDocumento}")]
+        [HttpGet("GetTipodocumentoById/{IdTipoDocumento}")]
         public async Task<IActionResult> ObtenerTipodocumentoById(int IdTipoDocumento)
         {
             var data = await _TipoDocumentoService.ObtenerTipodocumentoById(IdTipoDocumento);
@@ -31,14 +31,14 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpPost("")]
+        [HttpPost("PostTipodocumento")]
         public async Task<IActionResult> RegistrarTipodocumento([FromBody] Tipodocumento tipodocumento)
         {
             var response = await _TipoDocumentoService.RegistrarTipodocumento(tipodocumento);
             return Ok(response);
         }
 
-        [HttpPut("")]
+        [HttpPut("PutTipodocumento")]
         public async Task<IActionResult> ActualizarTipodocumento([FromBody] Tipodocumento tipodocumento)
         {
             var data = await _TipoDocumentoService.ActualizarTipodocumento(tipodocumento);
@@ -46,7 +46,7 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("{IdTipoDocumento}")]
+        [HttpDelete("DeleteTipodocumento/{IdTipoDocumento}")]
         public async Task<IActionResult> EliminarTipodocumento(int IdTipoDocumento)
         {
             var response = await _TipoDocumentoService.EliminarTipodocumento(IdTipoDocumento);

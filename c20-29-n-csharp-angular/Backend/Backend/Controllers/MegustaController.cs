@@ -16,7 +16,7 @@ namespace Backend.Controllers
             _MeGustaService = MeGustaService;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetListaMegustas")]
         public async Task<IActionResult> ListarMegustas()
         {
             var data = await _MeGustaService.ListarMegustas();
@@ -24,7 +24,7 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{IdMeGusta}")]
+        [HttpGet("GetMegustaById/{IdMeGusta}")]
         public async Task<IActionResult> ObtenerMegustaById(int IdMeGusta)
         {
             var data = await _MeGustaService.ObtenerMegustaById(IdMeGusta);
@@ -32,14 +32,14 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpPost("")]
+        [HttpPost("PostMegusta")]
         public async Task<IActionResult> RegistrarMegusta([FromBody] Megusta megusta)
         {
             var response = await _MeGustaService.RegistrarMegusta(megusta);
             return Ok(response);
         }
 
-        [HttpPut("")]
+        [HttpPut("PutMegusta")]
         public async Task<IActionResult> ActualizarMegusta([FromBody] Megusta megusta)
         {
             var data = await _MeGustaService.ActualizarMegusta(megusta);
@@ -47,7 +47,7 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("{IdMeGusta}")]
+        [HttpDelete("DeleteMegusta/{IdMeGusta}")]
         public async Task<IActionResult> EliminarMegusta(int IdMeGusta)
         {
             var response = await _MeGustaService.EliminarMegusta(IdMeGusta);

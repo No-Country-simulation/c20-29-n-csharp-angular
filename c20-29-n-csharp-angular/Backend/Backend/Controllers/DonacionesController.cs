@@ -18,7 +18,7 @@ namespace Backend.Controllers
             _donacionesService = donacionesService;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetListaDonaciones")]
         public async Task<IActionResult> ListarDonaciones()
         {
             var data = await _donacionesService.ListarDonaciones();
@@ -26,7 +26,7 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{idDonacion}")]
+        [HttpGet("GetDonacionById/{idDonacion}")]
         public async Task<IActionResult> ObtenerDonacionById(int idDonacion)
         {
             var data = await _donacionesService.ObtenerDonacionById(idDonacion);
@@ -34,14 +34,14 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpPost("")]
+        [HttpPost("PostaDonaciones")]
         public async Task<IActionResult> RegistrarDonaciones([FromBody] Donaciones Donaciones)
         {
             var response = await _donacionesService.RegistrarDonaciones(Donaciones);
             return Ok(response);
         }
 
-        [HttpPut("")]
+        [HttpPut("PutDonaciones")]
         public async Task<IActionResult> ActualizarDonaciones([FromBody] Donaciones Donaciones)
         {
             var data = await _donacionesService.ActualizarDonaciones(Donaciones);
@@ -49,7 +49,7 @@ namespace Backend.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("{idDonacion}")]
+        [HttpDelete("DeleteDonacion/{idDonacion}")]
         public async Task<IActionResult> EliminarDonaciones(int idDonacion)
         {
             var response = await _donacionesService.EliminarDonaciones(idDonacion);
