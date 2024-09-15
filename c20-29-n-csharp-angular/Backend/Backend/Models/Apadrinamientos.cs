@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Backend.Models;
 
@@ -16,9 +17,10 @@ public partial class Apadrinamientos
 
 	public int? IdPadrino { get; set; }
 
+	[JsonIgnore]
 	[ForeignKey("IdPost")]
 	public virtual Usuario? Padrino { get; set; }
-
-	[ForeignKey("IdPadrino")]
+    [JsonIgnore]
+    [ForeignKey("IdPadrino")]
 	public virtual Post? Post { get; set; }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Backend.Models;
 
@@ -19,13 +20,13 @@ public partial class Donaciones
 	public int? IdUsuarioDonate { get; set; }
 
 	public int? IdPost { get; set; }
-
+	[JsonIgnore]
 	[ForeignKey("IdPost")]
 	public virtual Post? Post { get; set; }
-
-	[ForeignKey("IdUsuarioPeticion")]
+    [JsonIgnore]
+    [ForeignKey("IdUsuarioPeticion")]
 	public virtual Usuario? UsuarioPeticion { get; set; }
-
-	[ForeignKey("IdUsuarioDonate")]
+    [JsonIgnore]
+    [ForeignKey("IdUsuarioDonate")]
 	public virtual Usuario? UsuarioDonate { get; set; }
 }

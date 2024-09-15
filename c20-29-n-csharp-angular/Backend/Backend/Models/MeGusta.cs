@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Backend.Models;
 
@@ -15,7 +16,7 @@ public partial class Megusta
     public int? IdUsuario { get; set; }
 
     public bool? Bborrado { get; set; }
-
-	[ForeignKey("IdPost")]
+    [JsonIgnore]
+    [ForeignKey("IdPost")]
 	public virtual Post Post { get; set; } = null!;
 }
