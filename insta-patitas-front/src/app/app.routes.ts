@@ -10,23 +10,45 @@ export const routes: Routes = [
 	{
 		path: "patitas",
 		loadComponent: () =>
-			import("./pages/home/home.component").then((c) => c.HomeComponent),
+      import("./pages/home/home.component").then((c) => c.HomeComponent),
+    canActivate:[authRouteGuard]
 	},
 	{
 		path: "login",
 		loadComponent: () =>
-			import("./auth/login/login.component").then((c) => c.LoginComponent),
+      import("./auth/login/login.component").then((c) => c.LoginComponent),
+    canActivate: [authRouteGuard]
 	},
 	{
 		path: "register",
 		loadComponent: () =>
 			import("./auth/register/register.component").then(
-				(c) => c.RegisterComponent
-			),
-  },
-  {
-    path: 'product-form',
-    loadComponent: () => import('./components/product-form/product-form.component').then(c => c.ProductFormComponent),
+        (c) => c.RegisterComponent
+      ),
     canActivate: [authRouteGuard]
-  }
+	},
+	{
+		path: "product-form",
+		loadComponent: () =>
+			import("./components/product-form/product-form.component").then(
+				(c) => c.ProductFormComponent
+			),
+		canActivate: [authRouteGuard]
+	},
+	{
+		path: "perfil-user",
+		loadComponent: () =>
+			import("./components/perfil-user/perfil-user.component").then(
+				(c) => c.PerfilUserComponent
+			),
+		canActivate: [authRouteGuard]
+	},
+	{
+		path: "Inicio",
+		loadComponent: () =>
+			import("./components/nav-bar/nav-bar.component").then(
+				(c) => c.NavBarComponent
+      ),
+    canActivate: [authRouteGuard]
+	},
 ];
