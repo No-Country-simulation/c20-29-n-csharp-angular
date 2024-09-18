@@ -14,11 +14,5 @@ export class ScrollService {
     );
   }
 
-  getAllMedia(): Observable<any> {
-    return this._http.get(
-      'https://r6kc4qqg-simulacion-api.rutasdepiurarentacar.com/Post/GetListaPosts'
-    );
-  }
-
   constructor() {}
 }

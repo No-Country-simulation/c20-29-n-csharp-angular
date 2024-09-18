@@ -1,18 +1,10 @@
 <app-header class="sticky top-0"></app-header>
 <div class="flex justify-center mt-8 snap-y mb-4">
-  <div *ngIf="posts$ | async as posts">
-    <div>
-      <img
-        class="snap-center mb-10 rounded-lg"
-        [src]="posts.multimediaPost"
-        alt=""
-      />
-      <img
-        class="snap-center rounded-lg"
-        src="https://placehold.co/320x630"
-        alt=""
-      />
-    </div>
-  </div>
+  <!--<div *ngIf="posts$ | async as posts">-->
+  <!--<div *ngFor="let post of posts">-->
+  <img class="snap-center mb-10 rounded-lg" [src]="posts" [alt]="posts" />
+  <!--</div>
+  </div>-->
 </div>
 <app-nav-bar></app-nav-bar>
+<!--data:image/png;base64,${this.data.urlFoto-->
