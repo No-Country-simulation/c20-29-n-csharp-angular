@@ -26,8 +26,8 @@ export class CreatePostComponent implements OnInit {
 		if (input.files && input.files[0]) {
 			const reader = new FileReader();
 
-			reader.onload = () => {
-				this.post = reader.result;
+      reader.onload = () => {
+        this.post = reader.result;
 			};
 
 			reader.readAsDataURL(input.files[0]);
@@ -62,7 +62,7 @@ export class CreatePostComponent implements OnInit {
 }
 
 
-// Con esto quitariamos el mime del base64
+// // Con esto quitariamos el mime del base64
 // function whitoutMime(base64: string | ArrayBuffer) {
 // 	let img: string = "";
 

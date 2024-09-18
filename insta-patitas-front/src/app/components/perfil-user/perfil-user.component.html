@@ -41,8 +41,8 @@
     </article>
   </header>
   <section class="content">
-    @for (item of data.post; track $index) {
-      <img src="{{item}}" alt="images-user">
+    @for (item of posts ; track $index) {
+      <img src="{{item.multimediaPost}}" alt="images-user">
     }
   </section>
 </main>

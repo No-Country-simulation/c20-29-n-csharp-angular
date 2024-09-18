@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 })
 export class CreatePostService {
 	private url: string =
-		"https://r6kc4qqg-simulacion-api.rutasdepiurarentacar.com/Post/PostPost";
+		"https://r6kc4qqg-simulacion-api.rutasdepiurarentacar.com";
 
 	constructor(
 		private httpClient: HttpClient,
@@ -23,11 +23,10 @@ export class CreatePostService {
     formData.append('TipoPost', post.type);
     formData.append('Descripcion', post.description);
     formData.append('IdUsuario', this.cookie.get('id'));
-    formData.append('listaArchiva', img);
+    formData.append("listaArchivos", img);
 
-    console.log(img)
 
     
-		return this.httpClient.post(this.url, formData);
+		return this.httpClient.post(`${this.url}/Post/PostPost`, formData, {observe: "response"});
 	}
 }

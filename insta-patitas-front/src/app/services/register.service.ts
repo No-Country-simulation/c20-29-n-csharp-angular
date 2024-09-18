@@ -13,7 +13,6 @@ export class RegisterService {
   
 
   register(data: any, img: string | ArrayBuffer): Observable<HttpResponse<any>>{
-    console.log(data)
     let body = {
       nombre: data.username,
       correoElectronico: data.email,

@@ -46,8 +46,8 @@ export const routes: Routes = [
 	{
 		path: "inicio",
 		loadComponent: () =>
-			import("./components/nav-bar/nav-bar.component").then(
-				(c) => c.NavBarComponent
+			import("./components/scroll/scroll.component").then(
+				(c) => c.ScrollComponent
       ),
     canActivate: [authRouteGuard]
 	},

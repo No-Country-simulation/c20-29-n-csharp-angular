@@ -8,11 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class PerfilUserService {
 	private url: string =
-		"https://r6kc4qqg-simulacion-api.rutasdepiurarentacar.com/Usuarios";
+		"https://r6kc4qqg-simulacion-api.rutasdepiurarentacar.com";
 
 	constructor(private httpClient: HttpClient,@Inject(CookieService) private cookies : CookieService) {}
 
 	user(): Observable<any> {
-		return this.httpClient.get(`${this.url}/${this.cookies.get('id')}`);
-	}
+		return this.httpClient.get(
+			`${this.url}/Usuarios/${this.cookies.get("id")}`
+		);
+  }
+  
+  post(): Observable<any> {
+    return this.httpClient.get(`${this.url}/Post/GetListaPosts`);
+  }
 }
