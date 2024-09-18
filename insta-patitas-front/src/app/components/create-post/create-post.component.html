@@ -1,57 +1,35 @@
 <div class="flex w-full">
-  <div
-    class="flex flex-col flex-wrap justify-evenly w-4/5 mr-auto p-3 mx-auto min-w-96 container"
-  >
+  <div class="flex flex-col flex-wrap justify-evenly w-4/5 mr-auto p-3 mx-auto min-w-96 container">
     <h1 class="mx-auto text-blue-800 font-bold text-2xl m-2 mt-5 w-4/5">
       Nuevo post
     </h1>
     <div
-      class="flex flex-row justify-center items-center border-2 border-gray-500 rounded-md w-96 h-96 my-1 mx-auto text-center"
-    >
-      <img src="https://placehold.co/384x384" clas="md:w-32 lg:w-48" alt="" />
+      class="container-post flex flex-row justify-center items-center border-2 border-gray-500 rounded-md w-96 h-96 my-1 mx-auto text-center">
+      <input  type="file" name="post" (change)="cargarPost($event)">
+      <img [src]="[ post ? post : 'https://placehold.co/384x384']" clas="md:w-32 lg:w-48" alt="" />
     </div>
-    <form
-      class="flex flex-col flex-wrap justify-evenly w-4/5 mr-auto p-3 mx-auto min-w-96 container"
-    >
+    <form (submit)="sendPost($event)" class="flex flex-col flex-wrap justify-evenly w-4/5 mr-auto p-3 mx-auto min-w-96 container">
       <div class="flex flex-col items-start w-96 my-1 mx-auto">
-        <input
-          id="name"
-          type="text"
-          placeholder="Agregar una descripcion"
-          class="block border-b border-gray-500 w-96 my-1 mx-auto p-1"
-          formControlName="referencesName"
-        />
+        <input id="name" type="text" name="description" placeholder="Agregar una descripcion"
+          class="block border-b border-gray-500 w-96 my-1 mx-auto p-1" formControlName="referencesName" />
         <label class="inline-flex items-center">
-          <input
-            type="checkbox"
-            formControlName="termsConditions"
-            class="form-checkbox"
-          />
+          <input type="radio" name="type_post" value="Refugio" formControlName="termsConditions" class="form-checkbox" />
           <span class="ml-2">Refugio</span>
         </label>
         <label class="inline-flex items-center mt-2">
-          <input
-            type="checkbox"
-            formControlName="privacyPolicy"
-            class="form-checkbox"
-          />
+          <input type="radio" name="type_post" value="Productos o servicios" formControlName="privacyPolicy" class="form-checkbox" />
           <span class="ml-2">Productos o servicios</span>
         </label>
         <label class="inline-flex items-center mt-2">
-          <input
-            type="checkbox"
-            formControlName="privacyPolicy"
-            class="form-checkbox"
-          />
+          <input type="radio" checked name="type_post" value="Otros" formControlName="privacyPolicy" class="form-checkbox" />
           <span class="ml-2">Otros</span>
         </label>
       </div>
-      <button
-        type="submit"
-        class="block rounded-md w-48 my-1 mx-auto text-white bg-blue-700 hover:bg-blue-800 p-2"
-      >
-        Enviar Formulario
+      <button type="submit" class="block rounded-md w-48 my-1 mx-auto text-white bg-blue-700 hover:bg-blue-800 p-2">
+        Publicar
       </button>
     </form>
   </div>
 </div>
+
+<app-nav-bar></app-nav-bar>

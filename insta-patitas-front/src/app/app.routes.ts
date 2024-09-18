@@ -5,7 +5,7 @@ export const routes: Routes = [
 	{
 		path: "",
 		pathMatch: "full",
-		redirectTo: "patitas",
+		redirectTo: "/patitas",
 	},
 	{
 		path: "patitas",
@@ -44,10 +44,18 @@ export const routes: Routes = [
 		canActivate: [authRouteGuard]
 	},
 	{
-		path: "Inicio",
+		path: "inicio",
 		loadComponent: () =>
 			import("./components/nav-bar/nav-bar.component").then(
 				(c) => c.NavBarComponent
+      ),
+    canActivate: [authRouteGuard]
+	},
+	{
+		path: "create-post",
+		loadComponent: () =>
+			import("./components/create-post/create-post.component").then(
+				(c) => c.CreatePostComponent
       ),
     canActivate: [authRouteGuard]
 	},

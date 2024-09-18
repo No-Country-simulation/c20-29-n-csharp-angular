@@ -20,7 +20,7 @@ import { CookieService } from "ngx-cookie-service";
 })
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup; // Instancia de FormGroup que representa el formulario de inicio de sesión
-	submitted = false; // Propiedad que indica si el formulario ha sido enviado
+  submitted = false; // Propiedad que indica si el formulario ha sido enviado
 	responseLogin: string;
 
 	constructor(
@@ -62,9 +62,13 @@ export class LoginComponent implements OnInit {
 					next: (res) => {
 						this.responseLogin = res.message;
             if (res.data) {
-              console.log(res.data)
-              this.router.navigate(["/Inicio"]);
-              this.cookies.set('auth',`patitas_${res.data.nombre.replace(' ','_')}`)
+              this.router.navigate(["/inicio"]);
+              this.cookies.set(
+								"auth",
+								`patitas_${res.data.nombre.replace(" ", "_")}`
+              );
+              
+              this.cookies.set('id', res.data.idUsuario)
               
               
             }

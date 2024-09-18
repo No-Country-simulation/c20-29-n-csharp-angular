@@ -1,11 +1,9 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
-  Validator,
-  Form,
 } from '@angular/forms';
 
 @Component({

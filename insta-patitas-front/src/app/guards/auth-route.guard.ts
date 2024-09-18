@@ -7,11 +7,11 @@ export const authRouteGuard: CanActivateFn = (route, state) => {
   const cookies = inject(CookieService);
   const router = inject(Router);
 
-	const routesNotAllowedWhitAuth = ["/patitas", "/login", "/", '/register'];
+  const routesNotAllowedWhitAuth = ["/patitas", "/login", "/", '/register'];
 
 	if (routesNotAllowedWhitAuth.includes(state.url) && cookies.get("auth")) {
-		if (state.url !== "/Inicio") {
-			router.navigateByUrl("/Inicio");
+		if (state.url !== "/inicio") {
+			router.navigateByUrl("/inicio");
 		}
 		return false;
   }
