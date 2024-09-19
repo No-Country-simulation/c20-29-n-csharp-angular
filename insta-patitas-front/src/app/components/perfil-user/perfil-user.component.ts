@@ -34,7 +34,7 @@ export class PerfilUserComponent implements OnInit {
 				res.map((post) => {
           if (post.idUsuario === this.id) {
             
-						if (!`data:image/png;base64,`.includes(post.multimediaPost)) {
+						if (!`data:image/jpeg;base64,`.includes(post.multimediaPost)) {
 							post.multimediaPost = `data:image/jpeg;base64,${post.multimediaPost}`;
 							this.posts.unshift(post);
 						}

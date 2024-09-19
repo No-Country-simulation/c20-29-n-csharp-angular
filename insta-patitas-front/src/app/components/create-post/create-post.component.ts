@@ -11,7 +11,8 @@ import { NavBarComponent } from "../nav-bar/nav-bar.component";
 	styleUrl: "./create-post.component.css",
 })
 export class CreatePostComponent implements OnInit {
-	post: string | ArrayBuffer;
+  post: string | ArrayBuffer;
+  img: any;
 
 	constructor(
 		private createService: CreatePostService,
@@ -23,7 +24,8 @@ export class CreatePostComponent implements OnInit {
 	cargarPost(event: Event) {
 		const input = event.target as HTMLInputElement;
 
-		if (input.files && input.files[0]) {
+    if (input.files && input.files[0]) {
+      this.img = input.files[0];
 			const reader = new FileReader();
 
       reader.onload = () => {
@@ -43,12 +45,12 @@ export class CreatePostComponent implements OnInit {
       
 			let data = {
 				description: form.get("description"),
-				type: form.get("type_post"),
+        type: form.get("type_post"),
+        img: this.img
 			};
 
-			this.createService.post(data, (typeof this.post === 'string') ? this.post : '').subscribe({
+			this.createService.post(data).subscribe({
         next: (res) => {
-          console.log(res)
 					this.router.navigateByUrl("/inicio");
 				},
 				error: (e) => {
@@ -62,14 +64,14 @@ export class CreatePostComponent implements OnInit {
 }
 
 
-// // Con esto quitariamos el mime del base64
-// function whitoutMime(base64: string | ArrayBuffer) {
-// 	let img: string = "";
+// Con esto quitariamos el mime del base64
+function whitoutMime(base64: string | ArrayBuffer) {
+	let img: string = "";
 
-// 	if (typeof base64 === "string") {
-// 		let arrayBase64 = base64.split(",");
+	if (typeof base64 === "string") {
+		let arrayBase64 = base64.split(",");
 
-// 		img = arrayBase64[1];
-// 	}
-// 	return [img];
-// }
+		img = arrayBase64[1];
+	}
+	return [img];
+}
