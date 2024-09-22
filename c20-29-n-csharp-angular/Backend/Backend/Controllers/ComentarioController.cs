@@ -7,7 +7,7 @@ using Serilog;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class ComentarioController : ControllerBase
     {
         private readonly IComentariosService _comRepositorio;
@@ -115,7 +115,7 @@ namespace Backend.Controllers
                 return Ok(
                     new
                     {
-                        Message = $"El comentario con el ID {idComentario} ha sido eliminado.",
+                        Message = $"El comentario con el ID {idComentario} ha sido eliminado",
                         Comentario = comentario
                     }
                     );
