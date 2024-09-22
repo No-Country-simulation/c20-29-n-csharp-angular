@@ -1,0 +1,17 @@
+<app-header class="sticky top-0"></app-header>
+<div class="flex justify-center mt-8 snap-y mb-4">
+
+  @if (posts) {
+  <div>
+    @for (data of posts; track $index) {
+
+    <div>
+      <img class="snap-center mb-10 rounded-lg" [src]="data.multimediaPost ? data.multimediaPost : ''"
+        [alt]="data.descripcion ? data.descripcion : ''" />
+    </div>
+    }
+  </div>
+
+  }
+</div>
+<app-nav-bar></app-nav-bar>

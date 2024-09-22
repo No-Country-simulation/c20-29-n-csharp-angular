@@ -1,0 +1,37 @@
+/* Estilos para el checkbox */
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db; 
+}
+
+/* Estilos para el label */
+.custom-label {
+  font-family: 'Inter', sans-serif; 
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.94px;
+  letter-spacing: 0.3%; 
+}
+
+@media only screen and (max-width: 375px) {
+  .ios-margin {
+    margin-top: 18dp;
+    margin-bottom: 18dp;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 768px) {
+  .android-margin {
+    margin-top: 16dp;
+    margin-bottom: 16dp;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .tablet-margin {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}

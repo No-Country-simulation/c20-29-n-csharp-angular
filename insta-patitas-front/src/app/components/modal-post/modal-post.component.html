@@ -1,0 +1,84 @@
+<div class="fixed inset-0 flex justify-center items-center z-50">
+    <!-- Contenedor principal del modal centrado en la pantalla -->
+    <div class="bg-white rounded-3xl p-6 w-80 shadow-lg">
+        <!-- Encabezado del modal con mensaje principal -->
+        <h2 class="text-blue-500 text-[16px] font-semibold mb-4">
+            ¡Gracias por animarte a darnos una Patita. Cuéntanos, ¿Cómo quieres ayudarnos?
+        </h2>
+
+        <!-- Sección para la opción "Adoptando" -->
+         <!-- [disabled]="isAdoptandoDisabled"  Deshabilitado basado en la lógica de TypeScript -->
+          <!--  [checked]="info.includes('adoptando')" = Marcado si la opción está en el array info -->
+             <!-- (change)="onCheckboxChange('adoptando')"= Maneja el cambio del estado del checkbox -->
+        <div class="flex items-center mb-2">
+            <input 
+                type="checkbox" 
+                id="adoptando" 
+                class="custom-checkbox mr-2"
+                [disabled]="isAdoptandoDisabled" 
+                [checked]="info.includes('adoptando')" 
+                (change)="onCheckboxChange('adoptando')"
+            >
+            <label for="adoptando">Adoptando</label>
+            <button class="ml-auto" (click)="showInfo('adoptando')">
+                <!-- Botón para mostrar el mensaje de ayuda -->
+                <img src="./../assets/images/help-circle.svg" alt="Ayuda" class="w-5 h-5">
+            </button>
+        </div>
+
+        <!-- Mensaje de ayuda para la opción "Adoptando" -->
+        <div *ngIf="helpVisible['adoptando']" class="bg-white p-4 rounded-lg shadow-md text-normal-verde mb-2 text-[12px] px-8">
+            Tienes la oportunidad de adoptar a un peludito y cambiarle la vida para siempre. Todas las opciones quedarán cubiertas con tu ayuda.
+        </div>
+
+        <!-- Sección para la opción "Donando" -->
+
+        <div class="flex items-center mb-2">
+            <input 
+                type="checkbox" 
+                id="donando" 
+                class="custom-checkbox mr-2"
+                [disabled]="isDonandoDisabled" 
+                [checked]="info.includes('donando')" 
+                (change)="onCheckboxChange('donando')" 
+            >
+            <label for="donando">Donando</label>
+            <button class="ml-auto" (click)="showInfo('donando')">
+                <!-- Botón para mostrar el mensaje de ayuda -->
+                <img src="./../assets/images/help-circle.svg" alt="Ayuda" class="w-5 h-5">
+            </button>
+        </div>
+
+        <!-- Mensaje de ayuda para la opción "Donando" -->
+        <div *ngIf="helpVisible['donando']" class="bg-white p-4 rounded-lg shadow-md text-normal-verde mb-2 text-[12px] px-8">
+            Puedes escoger entre donar dinero, alimentos o insumos para alguno de los refugios.
+        </div>
+
+        <!-- Sección para la opción "Apadrinando" -->
+        <div class="flex items-center mb-4">
+            <input 
+                type="checkbox" 
+                id="apadrinando" 
+                class="custom-checkbox mr-2"
+                [disabled]="isApadrinandoDisabled" 
+                [checked]="info.includes('apadrinando')"
+                (change)="onCheckboxChange('apadrinando')"
+            >
+            <label for="apadrinando">Apadrinando</label>
+            <button class="ml-auto" (click)="showInfo('apadrinando')">
+                <!-- Botón para mostrar el mensaje de ayuda -->
+                <img src="./../assets/images/help-circle.svg" alt="Ayuda" class="w-5 h-5">
+            </button>
+        </div>
+
+        <!-- Mensaje de ayuda para la opción "Apadrinando" -->
+        <div *ngIf="helpVisible['apadrinando']" class="bg-white p-4 rounded-lg shadow-md text-normal-verde mb-2 text-[12px] px-8">
+            Tendrás la oportunidad de apadrinar a uno de los animalitos con el pago de su esterilización o tratamiento médico.
+        </div>
+
+        <!-- Botón de continuar -->
+        <button class="bg-blue-500 text-white w-full py-2 rounded-md">
+            Continuar
+        </button>
+    </div>
+</div>

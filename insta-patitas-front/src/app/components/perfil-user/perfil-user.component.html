@@ -4,10 +4,10 @@
       <img src="img/LOGO.svg" alt="Logo">
     </figure>
     <figure class="photo-user">
-      <img src="img/Abuela.jpg" alt="Foto de perfil">
+      <img [src]="data.urlFoto ? data.urlFoto : 'img/no-image.svg'" alt="Foto de perfil">
     </figure>
     <article>
-      <h2>Tienda de mascotas</h2>
+      <h2>{{data.nombre}}</h2>
       <p class="descripcion">Venta de artículos y alimentos para mascotas con gran variedad de precios.</p>
 
       <a href="">Productos o Servicios</a>
@@ -41,8 +41,10 @@
     </article>
   </header>
   <section class="content">
-    @for (item of img; track $index) {
-      <img src="{{item}}" alt="images-ramdon">
+    @for (item of posts ; track $index) {
+      <img src="{{item.multimediaPost}}" alt="images-user">
     }
   </section>
 </main>
+
+<app-nav-bar></app-nav-bar>

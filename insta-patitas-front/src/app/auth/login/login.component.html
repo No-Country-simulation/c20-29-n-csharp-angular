@@ -1,0 +1,64 @@
+<div class="flex items-center justify-center min-h-screen p-medium">
+  <div class="w-full max-w-md p-base bg-white rounded-lg flex flex-col">
+    <!-- Logo de la aplicación -->
+    <img src="../../assets/images/logo.svg" alt="Logo" class="mx-auto mb-large w-[169px] h-[74px]" />
+
+    <!-- Formulario de inicio de sesión -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex-grow">
+      <!-- Campo de usuario -->
+      <!--El formControlName, asocia este campo de entrada con el control 'usuario' del FormGroup -->
+      <div class="mb-medium">
+        <input id="usuario" type="text" formControlName="usuario"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-normal focus:border-normal sm:text-sm font-inter"
+          placeholder="Usuario" />
+        <!-- Mensaje de error para el campo 'usuario' -->
+        <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched || submitted)"
+          class="text-red-600 text-sm mt-1 font-inter">
+          <small *ngIf="usuario.errors?.['required']">El usuario es requerido.</small>
+          <!-- Muestra mensaje si el campo es requerido pero está vacío -->
+        </div>
+      </div>
+
+      <!-- Campo de contraseña -->
+      <!-- El formControlName, asocia este campo de entrada con el control 'password' del FormGroup -->
+      <div class="mb-medium">
+        <input id="password" type="password" formControlName="password"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-normal focus:border-normal sm:text-sm"
+          placeholder="Contraseña" autocomplete="off" />
+        <!-- Mensaje de error para el campo 'password' -->
+        <div *ngIf="password.invalid && (password.dirty || password.touched || submitted)"
+          class="text-red-600 text-sm mt-1">
+          <small *ngIf="password.errors?.['required']">La contraseña es requerida.</small>
+          <!-- Muestra mensaje si el campo es requerido pero está vacío -->
+        </div>
+        <!-- Enlace para recuperación de contraseña -->
+        <div class="flex justify-end mt-tiny">
+          <a href="#" class="text-primario-light font-inter text-xs font-semibold tracking-wide">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
+      </div>
+      <!-- ! Configurar salida de error -->
+      <!-- <span class="text-red-600 text-sm mt-1">{{responseLogin}}</span> -->
+
+      <!-- Botón de envío del formulario -->
+      <button type="submit"
+        class="w-full py-2 px-4 bg-normal text-white font-semibold rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-normal hover:bg-normal-hover focus:ring-offset-2 mt-large">
+        Iniciar Sesión
+      </button>
+    </form>
+
+    <!-- Enlace para registrar una nueva cuenta -->
+    <div class="flex-grow">
+      <div class="absolute bottom-0 left-0 right-0 mb-x-large flex items-center justify-center">
+        <span class="text-normal font-inter text-xs font-semibold tracking-wide">
+          ¿No tienes cuenta?
+        </span>
+        <a [routerLink]="['/register']"
+          class="text-normal-neutro font-inter text-xs font-semibold tracking-wide ml-1 hover:text-red-700">
+          Regístrate
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
